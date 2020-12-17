@@ -1,9 +1,9 @@
 package com.virtusa.ExceptionHandler.dao;
 
 import com.virtusa.ExceptionHandler.entity.Vehicle;
-import com.virtusa.ExceptionHandler.exeption.DatabaseAuthondicationExeption;
+import com.virtusa.ExceptionHandler.exeption.DatabaseAuthondicationException;
 import com.virtusa.ExceptionHandler.exeption.DatabaseLibraryException;
-import com.virtusa.ExceptionHandler.exeption.SqlOpprationExeption;
+import com.virtusa.ExceptionHandler.exeption.SqlOppressionException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class VehicleDatabaseOppression {
 
-    public boolean saveVehicle(Vehicle vehicle) throws DatabaseAuthondicationExeption, DatabaseLibraryException {
+    public boolean saveVehicle(Vehicle vehicle) throws DatabaseAuthondicationException, DatabaseLibraryException {
         boolean bool = false;
         Connection con = DatabaseConnection.getconnection();
         try {
@@ -26,7 +26,7 @@ public class VehicleDatabaseOppression {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-            throw new SqlOpprationExeption("Sql operation Fail ", ex);
+            throw new SqlOppressionException("Sql operation Fail ", ex);
         }
         return bool;
     }

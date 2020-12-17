@@ -4,6 +4,8 @@ import com.virtusa.capitalization.service.CharacterFinder;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public class Application {
 
@@ -15,9 +17,10 @@ public class Application {
             String text = characterFinder.convertToCapital();
             System.out.println(text);
 
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException fileNotFoundException) {
             System.out.println("File not found  ");
-        } catch (IOException e) {
+
+        } catch (IOException ioException) {
             System.out.println("Cant read this File  ");
         }
 

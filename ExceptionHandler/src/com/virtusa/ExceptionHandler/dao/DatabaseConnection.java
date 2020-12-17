@@ -1,6 +1,6 @@
 package com.virtusa.ExceptionHandler.dao;
 
-import com.virtusa.ExceptionHandler.exeption.DatabaseAuthondicationExeption;
+import com.virtusa.ExceptionHandler.exeption.DatabaseAuthondicationException;
 import com.virtusa.ExceptionHandler.exeption.DatabaseLibraryException;
 
 import java.sql.Connection;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
 
-    public  static Connection getconnection() throws DatabaseAuthondicationExeption,DatabaseLibraryException{
+    public  static Connection getconnection() throws DatabaseAuthondicationException,DatabaseLibraryException{
 
         String url = "jdbc:mysql://localhost:3306/student";
         String username = "root";
@@ -22,10 +22,10 @@ public class DatabaseConnection {
             Class.forName("com.mysql.jdbc.Driver");
             //create the Connection
             con = DriverManager.getConnection(url, username, password);
-        } catch (ClassNotFoundException ex) {
-            throw  new DatabaseLibraryException("MySQL JDBC driver Library can not found ",ex);
+        } catch (ClassNotFoundException classNotFoundException) {
+            throw  new DatabaseLibraryException("MySQL JDBC driver Library can not found ",classNotFoundException);
         }  catch (SQLException ex) {
-            throw new DatabaseAuthondicationExeption("Please check your  Connection  Details , authentication problem  ", ex);
+            throw new DatabaseAuthondicationException("Please check your  Connection  Details , authentication problem  ", ex);
         }
         return con;
     }

@@ -14,7 +14,6 @@ public class CharacterFinder implements EnglishCharacter {
 
     public String convertToCapital() throws IOException {
 
-
         UppercaseReader uppercaseReader = new UppercaseReader(fileReader);
 
         String fullTextContent = "";
@@ -62,11 +61,9 @@ public class CharacterFinder implements EnglishCharacter {
                 }
             }
 
-
         }
 
         fileReader.close();
-
 
         return capitalLaterArray;
     }
