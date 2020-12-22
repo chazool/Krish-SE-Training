@@ -25,12 +25,11 @@ public class VehicleDatabaseOppression {
             con.close();
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+
             throw new SqlOppressionException("Sql operation Fail ", ex);
         }
         return bool;
     }
-
 
 
 }
