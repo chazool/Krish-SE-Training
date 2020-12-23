@@ -10,6 +10,18 @@
 /NumberReverser/.idea
 /NumberReverser/out
 
+/Design Patterns/SingletonDesignPattern/.idea
+/Design Patterns/SingletonDesignPattern/out
+
+
+/Design Patterns/FactoryMethodPattern/.idea
+/Design Patterns/FactoryMethodPattern/out
+
+/Design Patterns/PrototypeDesignPattern/.idea
+/Design Patterns/PrototypeDesignPattern/out
+
+
+
 *.iml
 
 # Compiled class file

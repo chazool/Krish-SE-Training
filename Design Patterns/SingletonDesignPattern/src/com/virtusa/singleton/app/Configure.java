@@ -2,6 +2,7 @@ package com.virtusa.singleton.app;
 
 
 import com.virtusa.singleton.exception.ConfigFileNotFoundException;
+import com.virtusa.singleton.exception.ConfigFileReadWriteException;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,12 +12,9 @@ import java.util.Properties;
 public class Configure {
 
 
-
     private static Configure propertyFileReader;
-    private static String configFilePath ="config.properties";
-    private static Properties properties ;
-
-
+    private static String configFilePath = "config.properties";
+    private static Properties properties;
 
 
     private Configure() {
@@ -25,7 +23,7 @@ public class Configure {
         }
     }
 
-    public static Configure getConfiguration() throws ConfigFileNotFoundException {
+    public static Configure getConfiguration() throws ConfigFileNotFoundException, ConfigFileReadWriteException {
 
         if (propertyFileReader == null) {
             synchronized (Configure.class) {
@@ -33,16 +31,14 @@ public class Configure {
                     propertyFileReader = new Configure();
                     //Config file reader
                     try {
-                        FileReader fileReader=new FileReader(configFilePath);
-                        properties=new Properties();
+                        FileReader fileReader = new FileReader(configFilePath);
+                        properties = new Properties();
                         properties.load(fileReader);
 
                     } catch (FileNotFoundException fileNotFoundException) {
-                        throw new ConfigFileNotFoundException("Configuration file is missing",fileNotFoundException);
-                    }
-                    catch (IOException ioException){
-                        // throw new IOException("Can not Read Configuration File ",ioException);
-                        throw new ConfigFileNotFoundException("Can not load Configuration File",ioException);
+                        throw new ConfigFileNotFoundException("Configuration file is missing", fileNotFoundException);
+                    } catch (IOException ioException) {
+                        throw new ConfigFileReadWriteException("Can not load Configuration File", ioException);
 
                     }
                 }
@@ -52,23 +48,14 @@ public class Configure {
     }
 
 
+    public String getDateFormat() throws ConfigFileReadWriteException {
 
-    public String getDateFormat() throws  FileNotFoundException{
-
-
-        if(properties != null){
+        if (properties != null)
             return properties.getProperty("dateFormat");
-        }else{
-            throw new FileNotFoundException();
-        }
-
+        else
+            throw new ConfigFileReadWriteException("Can not load Configuration File");
 
     }
-
-
-
-
-
 
 
 }
