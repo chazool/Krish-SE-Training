@@ -23,6 +23,11 @@
 /Design Patterns/TelescopingConstructorWithBuilderPattern/.idea
 /Design Patterns/TelescopingConstructorWithBuilderPattern/out
 
+/Design Patterns/ChainOfResponsibilityDesignPattern/.idea
+/Design Patterns/ChainOfResponsibilityDesignPattern/out
+
+/Design Patterns/mementoDesignPattern/.idea
+/Design Patterns/mementoDesignPattern/out
 
 *.iml
 
