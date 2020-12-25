@@ -20,6 +20,8 @@
 /Design Patterns/PrototypeDesignPattern/.idea
 /Design Patterns/PrototypeDesignPattern/out
 
+/Design Patterns/TelescopingConstructorWithBuilderPattern/.idea
+/Design Patterns/TelescopingConstructorWithBuilderPattern/out
 
 
 *.iml
