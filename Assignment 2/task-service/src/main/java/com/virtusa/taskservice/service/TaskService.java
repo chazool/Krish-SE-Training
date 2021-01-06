@@ -1,7 +1,7 @@
 package com.virtusa.taskservice.service;
 
+import com.virtusa.common.Task;
 import com.virtusa.taskservice.exception.TaskIdNullPointerException;
-import com.virtusa.taskservice.model.Task;
 
 import java.util.List;
 

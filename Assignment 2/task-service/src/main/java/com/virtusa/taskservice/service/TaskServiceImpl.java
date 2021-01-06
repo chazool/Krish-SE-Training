@@ -1,9 +1,9 @@
 package com.virtusa.taskservice.service;
 
+import com.virtusa.common.Project;
+import com.virtusa.common.Task;
 import com.virtusa.taskservice.exception.InvalidProjectException;
 import com.virtusa.taskservice.exception.TaskIdNullPointerException;
-import com.virtusa.taskservice.model.Project;
-import com.virtusa.taskservice.model.Task;
 import com.virtusa.taskservice.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +22,8 @@ public class TaskServiceImpl implements TaskService {
     private RestTemplate restTemplate;
 
     @Override
-    public String save(Task task) throws InvalidProjectException ,HttpClientErrorException {
+    public String save(Task task) throws InvalidProjectException, HttpClientErrorException {
         if (isActiveProject(task.getProjectId())) {
-
             //Create Active Task
             task.setActive(true);
 
@@ -49,6 +48,7 @@ public class TaskServiceImpl implements TaskService {
         else if (isActiveProject(task.getProjectId()) == false) {
             throw new InvalidProjectException("Invalid Project Id");
         } else {
+            task.setId(id);
             if (Optional.of(taskRepository.save(task)).isPresent()) {
                 return "Update Successful";
             } else {
@@ -100,10 +100,11 @@ public class TaskServiceImpl implements TaskService {
      */
     private boolean isActiveProject(int projectId) throws HttpClientErrorException {
         // Project Service
-        Project project = restTemplate.getForObject("http://localhost:8081/service/project/" + projectId, Project.class);
-        if (project.isActive() == true)
+        boolean isAvailable = restTemplate.getForObject("http://localhost:8081/service/project/isAvailable/" + projectId, Boolean.class);
+       /* if (isAvailable)
             return true;
         else
-            return false;
+            return false;*/
+        return isAvailable;
     }
 }

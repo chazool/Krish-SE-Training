@@ -1,4 +1,4 @@
-package com.virtusa.taskservice.model;
+package com.virtusa.common;
 
 import lombok.Data;
 

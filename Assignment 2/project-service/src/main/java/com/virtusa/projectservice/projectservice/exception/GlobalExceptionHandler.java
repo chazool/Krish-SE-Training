@@ -1,6 +1,6 @@
 package com.virtusa.projectservice.projectservice.exception;
 
-import com.virtusa.projectservice.projectservice.model.ErrorResponse;
+import com.virtusa.common.ErrorResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

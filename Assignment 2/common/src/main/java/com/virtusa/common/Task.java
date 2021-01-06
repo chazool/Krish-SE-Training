@@ -1,8 +1,11 @@
-package com.virtusa.taskservice.model;
+package com.virtusa.common;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "task")

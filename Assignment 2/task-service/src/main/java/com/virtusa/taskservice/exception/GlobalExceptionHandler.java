@@ -1,6 +1,6 @@
 package com.virtusa.taskservice.exception;
 
-import com.virtusa.taskservice.model.ErrorResponse;
+import com.virtusa.common.ErrorResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

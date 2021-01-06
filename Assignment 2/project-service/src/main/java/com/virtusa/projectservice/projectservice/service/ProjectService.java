@@ -1,12 +1,14 @@
 package com.virtusa.projectservice.projectservice.service;
 
-import com.virtusa.projectservice.projectservice.model.Project;
+
+import com.virtusa.common.Project;
 
 import java.util.List;
 
 public interface ProjectService {
-    Project save(Project project);
-    Project update(int id,Project project );
+    String save(Project project);
+    String update(int id,Project project );
+    String delete(int id);
     Project findById(int id);
     List<Project> findAll();
 }

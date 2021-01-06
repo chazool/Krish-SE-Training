@@ -1,9 +1,8 @@
 package com.virtusa.taskservice.controller;
 
+import com.virtusa.common.Task;
 import com.virtusa.taskservice.exception.InvalidProjectException;
 import com.virtusa.taskservice.exception.TaskIdNullPointerException;
-import com.virtusa.taskservice.model.Project;
-import com.virtusa.taskservice.model.Task;
 import com.virtusa.taskservice.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

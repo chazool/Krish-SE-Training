@@ -1,6 +1,6 @@
 package com.virtusa.taskservice.repository;
 
-import com.virtusa.taskservice.model.Task;
+import com.virtusa.common.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
