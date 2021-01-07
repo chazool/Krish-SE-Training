@@ -15,6 +15,8 @@ public interface TaskService {
 
     List<Task> findAll();
 
+    List<Task> findByProjectId(int projectId);
+
     String delete(int id);
 
 

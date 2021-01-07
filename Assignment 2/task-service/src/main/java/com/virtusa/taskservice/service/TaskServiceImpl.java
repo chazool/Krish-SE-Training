@@ -94,17 +94,24 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.findAll();
     }
 
+    @Override
+    public List<Task> findByProjectId(int projectId) throws InvalidProjectException, HttpClientErrorException {
+        if (isActiveProject(projectId)) {
+            return taskRepository.findByProjectId(projectId);
+        } else {
+            throw new InvalidProjectException("Invalid Project Id");
+        }
+    }
+
     /*
     Active = True
     deactivate false
      */
     private boolean isActiveProject(int projectId) throws HttpClientErrorException {
         // Project Service
-        boolean isAvailable = restTemplate.getForObject("http://localhost:8081/service/project/isAvailable/" + projectId, Boolean.class);
-       /* if (isAvailable)
-            return true;
-        else
-            return false;*/
+        Boolean isAvailable = false;
+
+        isAvailable = restTemplate.getForObject("http://localhost:8081/service/project/isAvailable/" + projectId, Boolean.class);
         return isAvailable;
     }
 }

@@ -1,12 +1,12 @@
 package com.virtusa.projectservice.projectservice.service;
 
 import com.virtusa.common.Project;
-import com.virtusa.common.Task;
-import com.virtusa.projectservice.projectservice.exception.CompulsoryFieldNullException;
+import com.virtusa.projectservice.projectservice.exception.IllegalSortDirectionException;
+import com.virtusa.projectservice.projectservice.exception.InvalidColumnException;
 import com.virtusa.projectservice.projectservice.exception.ProjectIdNullPointException;
 import com.virtusa.projectservice.projectservice.repository.ProjectRepository;
-import org.hibernate.PropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -66,7 +66,6 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Project findById(int id) {
         Optional<Project> project = projectRepository.findById(id);
-
         if (project.isPresent())
             return project.get();
         else
@@ -76,5 +75,36 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<Project> findAll() {
         return projectRepository.findAll();
+    }
+
+    /*
+    direction - [ASC | DESC],
+    column - Sorted Column Name
+     */
+    @Override
+    public List<Project> findAll(String direction, String column) throws IllegalSortDirectionException, InvalidColumnException {
+        //valid - Direction
+        Sort.Direction shortDirection;
+        switch (direction.toUpperCase()) {
+            case "ASC":
+                shortDirection = Sort.Direction.ASC;
+                break;
+            case "DESC":
+                shortDirection = Sort.Direction.DESC;
+                break;
+            default:
+                shortDirection = null;
+                throw new IllegalSortDirectionException(direction + " is Invalid Sort Direction , Valid direction - [ASC | DESC] ");
+        }
+        // valid Column
+        if (Optional.of(column).isPresent())
+            return projectRepository.findAll(Sort.by(shortDirection, column));
+        else
+            throw new InvalidColumnException(column + "is Invalid Column");
+    }
+
+    @Override
+    public boolean existsById(int id) {
+        return projectRepository.existsById(id);
     }
 }

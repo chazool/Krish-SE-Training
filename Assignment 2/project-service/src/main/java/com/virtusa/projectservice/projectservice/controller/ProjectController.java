@@ -1,9 +1,12 @@
 package com.virtusa.projectservice.projectservice.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.virtusa.common.Project;
-import com.virtusa.projectservice.projectservice.exception.CompulsoryFieldNullException;
+import com.virtusa.projectservice.projectservice.exception.IllegalSortDirectionException;
+import com.virtusa.projectservice.projectservice.exception.InvalidColumnException;
 import com.virtusa.projectservice.projectservice.exception.ProjectIdNullPointException;
 import com.virtusa.projectservice.projectservice.service.ProjectService;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,12 +46,31 @@ public class ProjectController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Project> getProject(@PathVariable int id) {
         Project project = projectService.findById(id);
+
         if (project == null)
             return ResponseEntity.notFound().build();
         else
             return ResponseEntity.ok().body(project);
     }
 
+    @GetMapping("/{column}/{direction}")
+    public JSONObject getProjects(@PathVariable String column, @PathVariable String direction) {
+        List<Project> projects = null;
+        String message = null;
+        try {
+            projects = projectService.findAll(direction, column);
+        } catch (IllegalSortDirectionException illegalSortDirectionException) {
+            message = illegalSortDirectionException.getMessage();
+        } catch (InvalidColumnException invalidColumnException) {
+            message = invalidColumnException.getMessage();
+        }
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("projects", projects);
+        jsonObject.put("message", message);
+
+        return jsonObject;
+    }
 
     @GetMapping
     public List<Project> getProjects() {
@@ -57,10 +79,7 @@ public class ProjectController {
 
     @GetMapping(value = "/isAvailable/{id}")
     public Boolean isAvailable(@PathVariable int id) {
-        if (projectService.findById(id) == null)
-            return false;
-        else
-            return true;
+        return projectService.existsById(id);
     }
 
 }
