@@ -1,6 +1,5 @@
 package com.virtusa.taskservice.service;
 
-import com.virtusa.common.projectservice.Project;
 import com.virtusa.common.taskservice.Task;
 import com.virtusa.taskservice.exception.InvalidProjectException;
 import com.virtusa.taskservice.exception.ProjectServiceException;

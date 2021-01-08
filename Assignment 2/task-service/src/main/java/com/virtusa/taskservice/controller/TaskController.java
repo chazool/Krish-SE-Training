@@ -1,13 +1,11 @@
 package com.virtusa.taskservice.controller;
 
-import com.sun.deploy.net.HttpResponse;
 import com.virtusa.common.responsehandle.Response;
 import com.virtusa.common.taskservice.Task;
 import com.virtusa.taskservice.exception.InvalidProjectException;
 import com.virtusa.taskservice.exception.ProjectServiceException;
 import com.virtusa.taskservice.exception.TaskIdNullPointerException;
 import com.virtusa.taskservice.service.TaskService;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
