@@ -1,6 +1,7 @@
 package com.virtusa.projectservice.projectservice.service;
 
 import com.virtusa.common.projectservice.Project;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public interface ProjectService {
 
     /***
-     * The method is used to save project
+     * The method for  save project
      *
      * @param project
      * @return String
@@ -18,7 +19,7 @@ public interface ProjectService {
     Project save(Project project);
 
     /***
-     * The method is used to Edit or Change Project
+     * The method for to Edit or Change Project
      * @param id
      * @param project
      * @return Project
@@ -26,21 +27,22 @@ public interface ProjectService {
     Project update(int id, Project project);
 
     /**
-     * The method use to Delete Project
+     * The method for Delete Project
+     *
      * @param id
      * @return
      */
     Project delete(int id);
 
     /***
-     * The method used to fetch Project using by Project Id
+     * The method for  fetch Project using by Project Id
      * @param id
      * @return Project
      */
     Project findById(int id);
 
     /***
-     * The method used to fetch projects using by IsActive Status
+     * The method for fetch projects using by IsActive Status
      * @param isActive
      * @return List<Project> -  project list
      */
@@ -55,13 +57,14 @@ public interface ProjectService {
     List<Project> getProjectsByBudgetComparison(String option, BigDecimal budget);
 
     /***
-     * The method used to fetch the All Projects
+     * The method for fetch the All Projects
      * @return List<Project>
      */
     List<Project> findAll();
 
     /**
-     * The method use to fetch with Sort Project using by column name
+     * The method for fetch with Sort Project using by column name
+     *
      * @param direction - sorting Type
      * @param column
      * @return List<Project>
@@ -69,7 +72,8 @@ public interface ProjectService {
     List<Project> findAll(String direction, String column);
 
     /**
-     * The method use to check the Existing project , it is available or Not
+     * The method for check the Existing project , it is available or Not
+     *
      * @param id
      * @return boolean - available = true | not = false
      */

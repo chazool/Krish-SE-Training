@@ -12,6 +12,19 @@ import java.util.Date;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler({RuntimeException.class})
+    public ResponseEntity<ErrorResponse> handleRuntimeException(RuntimeException runtimeException, HttpStatus status, WebRequest webRequest) {
+        ErrorResponse errorResponse = new ErrorResponse();
+        errorResponse.setTimeStamp(new Date().toString());
+        errorResponse.setMessage(runtimeException.getMessage());
+        errorResponse.setPath(webRequest.getDescription(false));
+        errorResponse.setStatus(status.value());
+        errorResponse.setError(status.getReasonPhrase());
+
+        return new ResponseEntity<>(errorResponse, status);
+    }
+
+
     //if is want use this commented Override method -  extends ResponseEntityExceptionHandler
     /* @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(
@@ -25,18 +38,6 @@ public class GlobalExceptionHandler {
         errorResponse.setError(status.getReasonPhrase());
         return new ResponseEntity(errorResponse, headers, status);
     }*/
-
-    @ExceptionHandler({RuntimeException.class})
-    public ResponseEntity<ErrorResponse> handleRuntimeException(RuntimeException runtimeException, HttpStatus status, WebRequest webRequest) {
-        ErrorResponse errorResponse = new ErrorResponse();
-        errorResponse.setTimeStamp(new Date().toString());
-        errorResponse.setMessage(runtimeException.getMessage());
-        errorResponse.setPath(webRequest.getDescription(false));
-        errorResponse.setStatus(status.value());
-        errorResponse.setError(status.getReasonPhrase());
-
-        return new ResponseEntity<>(errorResponse, status);
-    }
 
 
 }

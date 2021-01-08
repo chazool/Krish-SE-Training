@@ -1,17 +1,25 @@
 package com.virtusa.taskservice.controller;
 
+import com.sun.deploy.net.HttpResponse;
+import com.virtusa.common.responsehandle.Response;
 import com.virtusa.common.taskservice.Task;
 import com.virtusa.taskservice.exception.InvalidProjectException;
+import com.virtusa.taskservice.exception.ProjectServiceException;
 import com.virtusa.taskservice.exception.TaskIdNullPointerException;
 import com.virtusa.taskservice.service.TaskService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+/***
+ * @author chazool
+ */
 @RestController
 @RequestMapping("/service/task")
 public class TaskController {
@@ -21,67 +29,78 @@ public class TaskController {
     @Autowired
     private RestTemplate restTemplate;
 
-
+    /***
+     * The method for save Task ,
+     *  beofore Check and Validate Project Id
+     * @param task
+     * @return ResponseEntity<Response>
+     * @throws TaskIdNullPointerException
+     * @throws InvalidProjectException
+     * @throws ProjectServiceException
+     */
     @PostMapping
-    public String save(@RequestBody Task task) {
-        try {
-            return taskService.save(task);
-        } catch (TaskIdNullPointerException taskIdNullPointerException) {
-            return taskIdNullPointerException.getMessage();
-        } catch (InvalidProjectException invalidProjectException) {
-            return invalidProjectException.getMessage();
-        } catch (HttpClientErrorException httpClientErrorException) {
-            return "unavailable project service or ProjectId";
-        }
+    public ResponseEntity<Response> save(@RequestBody Task task) throws TaskIdNullPointerException, InvalidProjectException, ProjectServiceException {
+        return new ResponseEntity<Response>(new Response().success(taskService.save(task)), HttpStatus.OK);
     }
 
+    /***
+     * The method for update (Edit) task , before check project
+     * @param task
+     * @param id
+     * @return ResponseEntity<Response>
+     * @throws TaskIdNullPointerException
+     * @throws InvalidProjectException
+     * @throws ProjectServiceException
+     */
     @PutMapping("/{id}")
-    public String update(@RequestBody Task task, @PathVariable int id) {
-        try {
-            return taskService.update(id, task);
-        } catch (TaskIdNullPointerException taskIdNullPointerException) {
-            return taskIdNullPointerException.getMessage();
-        } catch (InvalidProjectException invalidProjectException) {
-            return invalidProjectException.getMessage();
-        } catch (HttpClientErrorException httpClientErrorException) {
-            return "unavailable project service or ProjectId";
-        }
+    public ResponseEntity<Response> update(@RequestBody Task task, @PathVariable int id) throws TaskIdNullPointerException, InvalidProjectException, ProjectServiceException {
+        return new ResponseEntity<Response>(new Response().success(taskService.update(id, task)), HttpStatus.OK);
+
     }
 
+    /***
+     * The method for delete task
+     * @param id
+     * @return ResponseEntity<Response>
+     * @throws TaskIdNullPointerException
+     * @throws HttpClientErrorException
+     */
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable int id) {
-        try {
-            return taskService.delete(id);
-        } catch (TaskIdNullPointerException taskIdNullPointerException) {
-            return taskIdNullPointerException.getMessage();
-        } catch (HttpClientErrorException httpClientErrorException) {
-            return "unavailable project service or ProjectId";
-        }
+    public ResponseEntity<Response> delete(@PathVariable int id) throws TaskIdNullPointerException, HttpClientErrorException {
+        return new ResponseEntity<Response>(new Response().success(taskService.delete(id)), HttpStatus.OK);
+
     }
 
+    /***
+     *  The method for fetch Task by Task Id
+     * @param id
+     * @return ResponseEntity<Response> - single Task
+     */
     @GetMapping("/{id}")
     public Task getTask(@PathVariable int id) {
         return taskService.findById(id);
     }
 
-    @GetMapping("/project/{projectId}")
-    public JSONObject getTaskByProjectId(@PathVariable int projectId) {
-        List<Task> tasks = null;
-        String message = null;
-        try {
-            tasks = taskService.findByProjectId(projectId);
-        } catch (InvalidProjectException invalidProjectException) {
-            message = invalidProjectException.getMessage();
-        } catch (HttpClientErrorException httpClientErrorException) {
-            message = "unavailable project service or ProjectId";
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("tasks", tasks);
-        jsonObject.put("message", message);
+    /***
+     * The method fetch all Tasks
+     * @return List<Task>
+     */
+    @GetMapping
+    public List<Task> getTask() {
+        return taskService.findAll();
+    }
 
-        return jsonObject;
+    /**
+     * The method for fetch Task by project id
+     *
+     * @param projectId
+     * @return ResponseEntity<Response> - multiple Project
+     * @throws InvalidProjectException
+     * @throws HttpClientErrorException
+     */
+    @GetMapping("/project/{projectId}")
+    public ResponseEntity<Response> getTaskByProjectId(@PathVariable int projectId) throws InvalidProjectException, HttpClientErrorException {
+        return new ResponseEntity<Response>(new Response().success(taskService.findByProjectId(projectId)), HttpStatus.OK);
     }
 
 }

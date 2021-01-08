@@ -1,7 +1,9 @@
 package com.virtusa.taskservice.service;
 
+import com.virtusa.common.projectservice.Project;
 import com.virtusa.common.taskservice.Task;
 import com.virtusa.taskservice.exception.InvalidProjectException;
+import com.virtusa.taskservice.exception.ProjectServiceException;
 import com.virtusa.taskservice.exception.TaskIdNullPointerException;
 import com.virtusa.taskservice.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,9 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.Optional;
 
+/***
+ * @author chazool
+ */
 @Service
 public class TaskServiceImpl implements TaskService {
 
@@ -20,26 +25,37 @@ public class TaskServiceImpl implements TaskService {
     @Autowired
     private RestTemplate restTemplate;
 
+    /***
+     * {@inheritDoc}
+     * before save set IsActive ture
+     * @param task
+     * @return Task
+     * @throws InvalidProjectException
+     * @throws HttpClientErrorException
+     */
     @Override
-    public String save(Task task) throws InvalidProjectException, HttpClientErrorException {
+    public Task save(Task task) throws InvalidProjectException, HttpClientErrorException {
         if (isActiveProject(task.getProjectId())) {
             //Create Active Task
             task.setActive(true);
-
-            if (Optional.of(taskRepository.save(task)).isPresent()) {
-                return "Id: " + task.getId() + " Save Successful";
-            } else {
-                return "Save Unsuccessful";
-            }
+            return taskRepository.save(task);
         } else {
             throw new InvalidProjectException("Invalid Project Id");
         }
 
     }
 
+    /**
+     * before update insert Task Id to Task Object
+     *
+     * @param id
+     * @param task
+     * @return Task
+     * @throws TaskIdNullPointerException
+     * @throws HttpClientErrorException
+     */
     @Override
-    public String update(int id, Task task) throws TaskIdNullPointerException, HttpClientErrorException {
-
+    public Task update(int id, Task task) throws TaskIdNullPointerException, HttpClientErrorException {
         if (id <= 0) {
             throw new TaskIdNullPointerException("Invalid Task Id");
         }
@@ -48,35 +64,33 @@ public class TaskServiceImpl implements TaskService {
             throw new InvalidProjectException("Invalid Project Id");
         } else {
             task.setId(id);
-            if (Optional.of(taskRepository.save(task)).isPresent()) {
-                return "Update Successful";
-            } else {
-                return "Update Unsuccessful";
-            }
+            return taskRepository.save(task);
         }
 
     }
 
+    /***
+     *{@inheritDoc}
+     * @param id
+     * @return Task
+     * @throws TaskIdNullPointerException
+     * @throws HttpClientErrorException
+     */
     @Override
-    public String delete(int id) throws TaskIdNullPointerException, HttpClientErrorException {
+    public Task delete(int id) throws TaskIdNullPointerException, HttpClientErrorException {
 
         if (id <= 0) {
             throw new TaskIdNullPointerException("Invalid Task Id");
         } else {
-            Task task = new Task();
-            task.setId(id);
-            task.setActive(false);
-
-            if (Optional.of(taskRepository.save(task)).isPresent()) {
-                return "Delete Successful";
-            } else {
-                return "Delete Unsuccessful";
-            }
+            return taskRepository.deactivateTask(id) == 1 ? taskRepository.findById(id).get() : null;
         }
-
-
     }
 
+    /***
+     * {@inheritDoc}
+     * @param id
+     * @return Task
+     */
     @Override
     public Task findById(int id) {
         Optional<Task> task = taskRepository.findById(id);
@@ -84,15 +98,26 @@ public class TaskServiceImpl implements TaskService {
             return task.get();
         else
             return null;
-
     }
 
-
+    /***
+     *{@inheritDoc}
+     * The Method for Fetch All Tasks
+     * @return List<Task>
+     */
     @Override
     public List<Task> findAll() {
         return taskRepository.findAll();
     }
 
+    /***
+     *{@inheritDoc}
+     * The method for fetch all Task by Project ID
+     * @param projectId
+     * @return List<Task>
+     * @throws InvalidProjectException
+     * @throws HttpClientErrorException
+     */
     @Override
     public List<Task> findByProjectId(int projectId) throws InvalidProjectException, HttpClientErrorException {
         if (isActiveProject(projectId)) {
@@ -102,15 +127,21 @@ public class TaskServiceImpl implements TaskService {
         }
     }
 
-    /*
-    Active = True
-    deactivate false
+    /***
+     *
+     * @param projectId
+     * @return boolean
+     *     -  Active = True
+     *        deactivate false
+     * @throws HttpClientErrorException
      */
     private boolean isActiveProject(int projectId) throws HttpClientErrorException {
         // Project Service
-        Boolean isAvailable = false;
+        try {
+            return restTemplate.getForObject("http://localhost:8081/service/project/isAvailable/" + projectId, Boolean.class);
 
-        isAvailable = restTemplate.getForObject("http://localhost:8081/service/project/isAvailable/" + projectId, Boolean.class);
-        return isAvailable;
+        } catch (HttpClientErrorException httpClientErrorException) {
+            throw new ProjectServiceException("unavailable project service or ProjectId" + "/n" + httpClientErrorException.getMessage(), httpClientErrorException);
+        }
     }
 }
