@@ -1,12 +1,11 @@
 package com.virtusa.taskservice.controller;
 
-import com.virtusa.common.Task;
+import com.virtusa.common.taskservice.Task;
 import com.virtusa.taskservice.exception.InvalidProjectException;
 import com.virtusa.taskservice.exception.TaskIdNullPointerException;
 import com.virtusa.taskservice.service.TaskService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -79,7 +78,7 @@ public class TaskController {
             e.printStackTrace();
         }
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("Tasks", tasks);
+        jsonObject.put("tasks", tasks);
         jsonObject.put("message", message);
 
         return jsonObject;

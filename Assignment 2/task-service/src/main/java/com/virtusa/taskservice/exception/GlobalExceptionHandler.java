@@ -1,6 +1,6 @@
 package com.virtusa.taskservice.exception;
 
-import com.virtusa.common.ErrorResponse;
+import com.virtusa.common.responsehandle.ErrorResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 @ControllerAdvice

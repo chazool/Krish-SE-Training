@@ -1,4 +1,4 @@
-package com.virtusa.common;
+package com.virtusa.common.taskservice;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.virtusa.common;
+package com.virtusa.common.responsehandle;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ public class ErrorResponse {
 
     private String error;
     private String timeStamp;
-    private String status;
+    private int status;
     private Object message;
     private String path;
 
