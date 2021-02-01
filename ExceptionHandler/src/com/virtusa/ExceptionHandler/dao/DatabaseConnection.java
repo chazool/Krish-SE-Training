@@ -1,7 +1,7 @@
-package com.virtusa.ExceptionHandler.dao;
+package com.chazool.ExceptionHandler.dao;
 
-import com.virtusa.ExceptionHandler.exeption.DatabaseAuthondicationException;
-import com.virtusa.ExceptionHandler.exeption.DatabaseLibraryException;
+import com.chazool.ExceptionHandler.exeption.DatabaseAuthondicationException;
+import com.chazool.ExceptionHandler.exeption.DatabaseLibraryException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

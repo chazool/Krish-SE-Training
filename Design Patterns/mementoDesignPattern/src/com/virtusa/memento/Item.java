@@ -1,4 +1,4 @@
-package com.virtusa.memento;
+package com.chazool.memento;
 
 public class Item {
 

@@ -1,7 +1,7 @@
-package com.virtusa.ExceptionHandler.controller;
+package com.chazool.ExceptionHandler.controller;
 
-import com.virtusa.ExceptionHandler.entity.Bike;
-import com.virtusa.ExceptionHandler.entity.Vehicle;
+import com.chazool.ExceptionHandler.entity.Bike;
+import com.chazool.ExceptionHandler.entity.Vehicle;
 
 public class Application {
 

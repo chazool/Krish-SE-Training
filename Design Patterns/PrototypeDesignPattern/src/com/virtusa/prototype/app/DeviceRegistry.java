@@ -1,6 +1,6 @@
-package com.virtusa.prototype.app;
+package com.chazool.prototype.app;
 
-import com.virtusa.prototype.exception.DeviceCloneNotSupportedException;
+import com.chazool.prototype.exception.DeviceCloneNotSupportedException;
 
 import java.util.HashMap;
 import java.util.Map;

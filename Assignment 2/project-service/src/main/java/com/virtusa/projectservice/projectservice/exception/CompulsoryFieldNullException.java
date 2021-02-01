@@ -1,4 +1,4 @@
-package com.virtusa.projectservice.projectservice.exception;
+package com.chazool.projectservice.projectservice.exception;
 
 public class CompulsoryFieldNullException extends RuntimeException {
     public CompulsoryFieldNullException(String message) {

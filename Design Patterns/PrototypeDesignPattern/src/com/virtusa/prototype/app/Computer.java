@@ -1,4 +1,4 @@
-package com.virtusa.prototype.app;
+package com.chazool.prototype.app;
 
 public class Computer  extends Device{
 

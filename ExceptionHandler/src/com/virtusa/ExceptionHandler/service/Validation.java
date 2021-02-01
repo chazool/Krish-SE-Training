@@ -1,7 +1,7 @@
-package com.virtusa.ExceptionHandler.service;
+package com.chazool.ExceptionHandler.service;
 
-import com.virtusa.ExceptionHandler.entity.Vehicle;
-import com.virtusa.ExceptionHandler.exeption.InvalidIdException;
+import com.chazool.ExceptionHandler.entity.Vehicle;
+import com.chazool.ExceptionHandler.exeption.InvalidIdException;
 
 public class Validation {
 

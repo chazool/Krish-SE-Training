@@ -1,4 +1,4 @@
-package com.virtusa.builderPattern.entity;
+package com.chazool.builderPattern.entity;
 
 public class Vehicle {
 

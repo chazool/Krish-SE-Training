@@ -1,6 +1,6 @@
-package com.virtusa.taskservice.repository;
+package com.chazool.taskservice.repository;
 
-import com.virtusa.common.taskservice.Task;
+import com.chazool.common.taskservice.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

@@ -1,7 +1,7 @@
-package com.virtusa.taskservice.service;
+package com.chazool.taskservice.service;
 
-import com.virtusa.common.taskservice.Task;
-import com.virtusa.taskservice.exception.TaskIdNullPointerException;
+import com.chazool.common.taskservice.Task;
+import com.chazool.taskservice.exception.TaskIdNullPointerException;
 
 import java.util.List;
 

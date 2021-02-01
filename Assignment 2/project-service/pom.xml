@@ -8,7 +8,7 @@
 		<version>2.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.virtusa.projectservice</groupId>
+	<groupId>com.chazool.projectservice</groupId>
 	<artifactId>project-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>project-service</name>
@@ -29,7 +29,7 @@
 
 
 		<dependency>
-			<groupId>org.virtusa.common</groupId>
+			<groupId>org.chazool.common</groupId>
 			<artifactId>common</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>

@@ -1,4 +1,4 @@
-package com.virtusa.projectservice.projectservice.exception;
+package com.chazool.projectservice.projectservice.exception;
 
 public class InvalidColumnException extends RuntimeException {
 

@@ -1,9 +1,9 @@
-package com.virtusa.ExceptionHandler.dao;
+package com.chazool.ExceptionHandler.dao;
 
-import com.virtusa.ExceptionHandler.entity.Vehicle;
-import com.virtusa.ExceptionHandler.exeption.DatabaseAuthondicationException;
-import com.virtusa.ExceptionHandler.exeption.DatabaseLibraryException;
-import com.virtusa.ExceptionHandler.exeption.SqlOppressionException;
+import com.chazool.ExceptionHandler.entity.Vehicle;
+import com.chazool.ExceptionHandler.exeption.DatabaseAuthondicationException;
+import com.chazool.ExceptionHandler.exeption.DatabaseLibraryException;
+import com.chazool.ExceptionHandler.exeption.SqlOppressionException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

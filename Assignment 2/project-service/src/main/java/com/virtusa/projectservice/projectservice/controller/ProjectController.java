@@ -1,11 +1,11 @@
-package com.virtusa.projectservice.projectservice.controller;
+package com.chazool.projectservice.projectservice.controller;
 
-import com.virtusa.common.projectservice.Project;
-import com.virtusa.common.responsehandle.Response;
-import com.virtusa.projectservice.projectservice.exception.IllegalSortDirectionException;
-import com.virtusa.projectservice.projectservice.exception.InvalidColumnException;
-import com.virtusa.projectservice.projectservice.exception.ProjectIdNullPointException;
-import com.virtusa.projectservice.projectservice.service.ProjectService;
+import com.chazool.common.projectservice.Project;
+import com.chazool.common.responsehandle.Response;
+import com.chazool.projectservice.projectservice.exception.IllegalSortDirectionException;
+import com.chazool.projectservice.projectservice.exception.InvalidColumnException;
+import com.chazool.projectservice.projectservice.exception.ProjectIdNullPointException;
+import com.chazool.projectservice.projectservice.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

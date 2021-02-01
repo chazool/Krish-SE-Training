@@ -1,4 +1,4 @@
-package com.virtusa.builderPattern.entity;
+package com.chazool.builderPattern.entity;
 
 import java.util.Date;
 

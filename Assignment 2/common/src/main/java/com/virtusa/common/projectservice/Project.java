@@ -1,4 +1,4 @@
-package com.virtusa.common.projectservice;
+package com.chazool.common.projectservice;
 
 import lombok.Data;
 

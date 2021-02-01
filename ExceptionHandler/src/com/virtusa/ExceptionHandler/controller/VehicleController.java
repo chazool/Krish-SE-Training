@@ -1,12 +1,12 @@
-package com.virtusa.ExceptionHandler.controller;
+package com.chazool.ExceptionHandler.controller;
 
-import com.virtusa.ExceptionHandler.entity.Bike;
-import com.virtusa.ExceptionHandler.entity.Vehicle;
-import com.virtusa.ExceptionHandler.exeption.DatabaseAuthondicationException;
-import com.virtusa.ExceptionHandler.exeption.DatabaseLibraryException;
-import com.virtusa.ExceptionHandler.exeption.InvalidIdException;
-import com.virtusa.ExceptionHandler.service.Validation;
-import com.virtusa.ExceptionHandler.service.VehicleService;
+import com.chazool.ExceptionHandler.entity.Bike;
+import com.chazool.ExceptionHandler.entity.Vehicle;
+import com.chazool.ExceptionHandler.exeption.DatabaseAuthondicationException;
+import com.chazool.ExceptionHandler.exeption.DatabaseLibraryException;
+import com.chazool.ExceptionHandler.exeption.InvalidIdException;
+import com.chazool.ExceptionHandler.service.Validation;
+import com.chazool.ExceptionHandler.service.VehicleService;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

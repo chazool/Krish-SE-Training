@@ -1,6 +1,6 @@
-package com.virtusa.projectservice.projectservice.repository;
+package com.chazool.projectservice.projectservice.repository;
 
-import com.virtusa.common.projectservice.Project;
+import com.chazool.common.projectservice.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

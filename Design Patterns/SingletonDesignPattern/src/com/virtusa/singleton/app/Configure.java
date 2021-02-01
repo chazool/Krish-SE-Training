@@ -1,8 +1,8 @@
-package com.virtusa.singleton.app;
+package com.chazool.singleton.app;
 
 
-import com.virtusa.singleton.exception.ConfigFileNotFoundException;
-import com.virtusa.singleton.exception.ConfigFileReadWriteException;
+import com.chazool.singleton.exception.ConfigFileNotFoundException;
+import com.chazool.singleton.exception.ConfigFileReadWriteException;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

@@ -1,10 +1,10 @@
-package com.virtusa.projectservice.projectservice.service;
+package com.chazool.projectservice.projectservice.service;
 
-import com.virtusa.common.projectservice.Project;
-import com.virtusa.projectservice.projectservice.exception.IllegalSortDirectionException;
-import com.virtusa.projectservice.projectservice.exception.InvalidColumnException;
-import com.virtusa.projectservice.projectservice.exception.ProjectIdNullPointException;
-import com.virtusa.projectservice.projectservice.repository.ProjectRepository;
+import com.chazool.common.projectservice.Project;
+import com.chazool.projectservice.projectservice.exception.IllegalSortDirectionException;
+import com.chazool.projectservice.projectservice.exception.InvalidColumnException;
+import com.chazool.projectservice.projectservice.exception.ProjectIdNullPointException;
+import com.chazool.projectservice.projectservice.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

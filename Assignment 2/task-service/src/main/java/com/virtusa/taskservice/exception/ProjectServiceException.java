@@ -1,4 +1,4 @@
-package com.virtusa.taskservice.exception;
+package com.chazool.taskservice.exception;
 
 public class ProjectServiceException extends RuntimeException {
 

@@ -1,6 +1,6 @@
-package com.virtusa.taskservice.exception;
+package com.chazool.taskservice.exception;
 
-import com.virtusa.common.responsehandle.ErrorResponse;
+import com.chazool.common.responsehandle.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

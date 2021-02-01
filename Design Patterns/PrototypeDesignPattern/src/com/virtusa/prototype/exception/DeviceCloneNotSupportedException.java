@@ -1,4 +1,4 @@
-package com.virtusa.prototype.exception;
+package com.chazool.prototype.exception;
 
 public class DeviceCloneNotSupportedException extends RuntimeException {
 

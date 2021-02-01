@@ -1,4 +1,4 @@
-package com.virtusa.factorymethod.app;
+package com.chazool.factorymethod.app;
 
 public class AccountFactory {
 

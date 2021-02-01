@@ -1,4 +1,4 @@
-package com.virtusa.capitalization.service;
+package com.chazool.capitalization.service;
 
 import java.io.BufferedReader;
 import java.io.IOException;

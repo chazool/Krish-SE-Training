@@ -1,4 +1,4 @@
-package com.virtusa.ExceptionHandler.entity;
+package com.chazool.ExceptionHandler.entity;
 
 public class Bus extends   Vehicle {
 

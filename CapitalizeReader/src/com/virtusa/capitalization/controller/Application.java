@@ -1,6 +1,6 @@
-package com.virtusa.capitalization.controller;
+package com.chazool.capitalization.controller;
 
-import com.virtusa.capitalization.service.CharacterFinder;
+import com.chazool.capitalization.service.CharacterFinder;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,7 +13,7 @@ public class Application {
     public static void main(String[] args) {
 
         try {
-            CharacterFinder characterFinder = new CharacterFinder("src\\com\\virtusa\\capitalization\\controller\\TextFile.txt");
+            CharacterFinder characterFinder = new CharacterFinder("src\\com\\chazool\\capitalization\\controller\\TextFile.txt");
             String text = characterFinder.convertToCapital();
             System.out.println(text);
 

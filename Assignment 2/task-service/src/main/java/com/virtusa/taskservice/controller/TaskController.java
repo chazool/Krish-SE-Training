@@ -1,11 +1,11 @@
-package com.virtusa.taskservice.controller;
+package com.chazool.taskservice.controller;
 
-import com.virtusa.common.responsehandle.Response;
-import com.virtusa.common.taskservice.Task;
-import com.virtusa.taskservice.exception.InvalidProjectException;
-import com.virtusa.taskservice.exception.ProjectServiceException;
-import com.virtusa.taskservice.exception.TaskIdNullPointerException;
-import com.virtusa.taskservice.service.TaskService;
+import com.chazool.common.responsehandle.Response;
+import com.chazool.common.taskservice.Task;
+import com.chazool.taskservice.exception.InvalidProjectException;
+import com.chazool.taskservice.exception.ProjectServiceException;
+import com.chazool.taskservice.exception.TaskIdNullPointerException;
+import com.chazool.taskservice.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

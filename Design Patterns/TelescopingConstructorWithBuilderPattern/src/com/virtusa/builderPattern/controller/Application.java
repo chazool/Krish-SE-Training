@@ -1,6 +1,6 @@
-package com.virtusa.builderPattern.controller;
+package com.chazool.builderPattern.controller;
 
-import com.virtusa.builderPattern.entity.*;
+import com.chazool.builderPattern.entity.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

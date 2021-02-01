@@ -1,4 +1,4 @@
-package com.virtusa.factorymethod.app;
+package com.chazool.factorymethod.app;
 
 public enum AccountType {
     ChildAccount,CurrentAccount,FixedAccount,SavingAccount

@@ -1,4 +1,4 @@
-package com.virtusa.singleton.exception;
+package com.chazool.singleton.exception;
 
 public class ConfigFileNotFoundException extends RuntimeException {
 

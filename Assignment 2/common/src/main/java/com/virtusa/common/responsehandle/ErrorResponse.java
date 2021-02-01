@@ -1,4 +1,4 @@
-package com.virtusa.common.responsehandle;
+package com.chazool.common.responsehandle;
 
 import lombok.Data;
 

@@ -1,10 +1,10 @@
-package com.virtusa.ExceptionHandler.service;
+package com.chazool.ExceptionHandler.service;
 
-import com.virtusa.ExceptionHandler.dao.VehicleDatabaseOppression;
-import com.virtusa.ExceptionHandler.entity.Vehicle;
-import com.virtusa.ExceptionHandler.exeption.DatabaseAuthondicationException;
-import com.virtusa.ExceptionHandler.exeption.DatabaseLibraryException;
-import com.virtusa.ExceptionHandler.exeption.InvalidIdException;
+import com.chazool.ExceptionHandler.dao.VehicleDatabaseOppression;
+import com.chazool.ExceptionHandler.entity.Vehicle;
+import com.chazool.ExceptionHandler.exeption.DatabaseAuthondicationException;
+import com.chazool.ExceptionHandler.exeption.DatabaseLibraryException;
+import com.chazool.ExceptionHandler.exeption.InvalidIdException;
 
 public class VehicleService {
 

@@ -1,4 +1,4 @@
-package com.virtusa.ExceptionHandler.exeption;
+package com.chazool.ExceptionHandler.exeption;
 
 public class SqlOppressionException extends RuntimeException{
 

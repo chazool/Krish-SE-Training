@@ -1,6 +1,6 @@
-package com.virtusa.projectservice.projectservice.service;
+package com.chazool.projectservice.projectservice.service;
 
-import com.virtusa.common.projectservice.Project;
+import com.chazool.common.projectservice.Project;
 
 import java.math.BigDecimal;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.virtusa.common.taskservice;
+package com.chazool.common.taskservice;
 
 import lombok.Data;
 
